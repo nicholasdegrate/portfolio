@@ -5,6 +5,23 @@ body {
 }
 
 
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
 .cta-btn {
     width: 200px;
+}
+
+.nav-cta-btn {
+    height: 50px !important ;
+    width: 250px;
+    background-color: #0E0E0E !important;
+    color: #fff;
+    white-space: nowrap;
 }
