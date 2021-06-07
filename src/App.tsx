@@ -1,13 +1,25 @@
 import { useState, Fragment } from 'react';
-import { Box, Flex, HStack, Image, useMediaQuery, VStack, Text, Heading, Grid } from '@chakra-ui/react';
-import { Drawer } from 'antd';
+import {
+	Box,
+	Flex,
+	Skeleton,
+	HStack,
+	Badge,
+	Image,
+	useMediaQuery,
+	VStack,
+	Text,
+	Heading,
+	Grid
+} from '@chakra-ui/react';
+import { Drawer, Button } from 'antd';
 import { Linkedin, GitHub } from 'react-feather';
-import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import stock from './image/stock.jpg';
 import stay from './image/airbnb.jpg';
 import lrp from './image/realestate.jpg';
 import evermonkey from './image/notes.jpg';
+import dog from './image/dog.svg';
+
 function App() {
 	const [ visible, setVisible ] = useState(false);
 	const [ mobile ] = useMediaQuery('(min-width: 100px) and (max-width: 700px)');
@@ -37,42 +49,38 @@ function App() {
 				) : (
 					<Fragment>
 						<HStack spacing="25px">
-							<Text>Work</Text>
-							<Text>About</Text>
-							<Text>Skills</Text>
-							<Text>Resume</Text>
+							{/* <Text>Work</Text> */}
+							{/* <Text>About</Text> */}
+							{/* <Text>Skills</Text> */}
+							{/* <Text>Resume</Text> */}
 						</HStack>
 					</Fragment>
 				)}
 				{mobile && (
 					<Fragment>
-						<VStack mr="1em" onClick={showDrawer} cursor="pointer">
+						<VStack display="none" mr="1em" onClick={showDrawer} cursor="pointer">
 							<Box h="2px" w="20px" bg="#000" />
 							<Box h="2px" w="20px" bg="#000" />
 						</VStack>
 						<Drawer placement="right" closable={false} onClose={onClose} visible={visible}>
 							<VStack align="left">
-								<Text cursor="pointer">Work</Text>
-								<Text cursor="pointer">About</Text>
-								<Text cursor="pointer">Skills</Text>
-								<Text cursor="pointer">Contact</Text>
-								<Text cursor="pointer">Resume</Text>
+								{/* <Text cursor="pointer">Work</Text> */}
+								{/* <Text cursor="pointer">About</Text> */}
+								{/* <Text cursor="pointer">Skills</Text> */}
+								{/* <Text cursor="pointer">Contact</Text> */}
+								{/* <Text cursor="pointer">Resume</Text> */}
 							</VStack>
 						</Drawer>
 					</Fragment>
 				)}
-				{mobile ? (
-					<Fragment />
-				) : (
-					<Fragment>
-						<button className="nav-cta-btn">
-							Contact Nicholas -{' '}
-							<Text fontWeight="300" display="inline-block" fontStyle="italic">
-								he's friendly
-							</Text>
-						</button>
-					</Fragment>
-				)}
+				<a href="mailto:nicholasdegrate@gmail.com">
+					<button className="nav-cta-btn">
+						Contact Nicholas -{' '}
+						<Text fontWeight="300" display="inline-block" fontStyle="italic">
+							he's friendly
+						</Text>
+					</button>
+				</a>
 			</Flex>
 			<Grid h="calc(70vh - 49px)" bg="#F5C53D" gridTemplateColumns="1fr" gridTemplateRows="1fr 10%">
 				<Grid
@@ -82,10 +90,19 @@ function App() {
 					gridTemplateColumns={mobile ? '1fr' : '1fr 1fr'}
 					gridTemplateRows={mobile ? '1fr 1fr' : '1fr'}
 				>
-					<Box ml="5em" alignSelf="center" bg="#000" w="200px" h="200px" borderRadius="100px">
-						<Box />
-					</Box>
-					<Heading mb=".5em" as="h2">
+					<Flex
+						justifyContent="center"
+						alignItems="center"
+						ml="5em"
+						alignSelf="center"
+						bg="#000"
+						w="200px"
+						h="200px"
+						borderRadius="100px"
+					>
+						<Image src={dog} w="60%" />
+					</Flex>
+					<Heading mb=".5em" as="h2" padding=".5em">
 						Building full stack web application<br /> for the user in mind.
 					</Heading>
 				</Grid>
@@ -94,7 +111,12 @@ function App() {
 						Hire Me
 					</Flex>
 					<Grid gridTemplateColumns="1fr 1fr 1fr">
-						<Flex justifyContent="center" alignItems="center" borderRight="2px solid #E9B836">
+						<Flex
+							display={mobile ? 'none' : 'flex'}
+							justifyContent="center"
+							alignItems="center"
+							borderRight="2px solid #E9B836"
+						>
 							<Text>nicholasdegrate@gmail.com</Text>
 						</Flex>
 						<Flex
@@ -108,157 +130,126 @@ function App() {
 						<Box>
 							<Grid h="100%" w="100%" gridTemplateColumns="1fr 1fr">
 								<Flex justifyContent="center" borderRight="2px solid #E9B836" alignItems="center">
-									<Linkedin />
+									<a
+										href="https://www.linkedin.com/in/nicholas-degrate-64193614b/"
+										target="_blank"
+										rel="noreferrer"
+									>
+										<Linkedin />
+									</a>
 								</Flex>
 								<Flex justifyContent="center" alignItems="center" borderRight="2px solid #E9B836">
-									<GitHub />
+									<a href="https://github.com/nicholasdegrate" target="_blank" rel="noreferrer">
+										<GitHub />
+									</a>
 								</Flex>
 							</Grid>
 						</Box>
 					</Grid>
 				</Grid>
 			</Grid>
-			<Box maxWidth="1200px" m="auto" h="100%">
+			<Box maxWidth="1200px" m="auto" h="100vh">
 				<Flex mt="5em" justifyContent="center" w="100%">
-					<Box w="80%">
+					<Box w="80%" mb="3em">
 						<Heading pb=".5em" borderBottom="2px solid #000" as="h1" textAlign="left">
 							SELECTED WORKS
 						</Heading>
 					</Box>
 				</Flex>
-				<CarouselProvider
-					naturalSlideWidth={200}
-					naturalSlideHeight={525}
-					totalSlides={3}
-					interval={5000}
-					isPlaying={true}
-					infinite
+				<Grid
+					maxWidth="958px"
+					width="90%"
+					gap={5}
+					justifyContent="center"
+					h="100%"
+					gridTemplateColumns="repeat(auto-fill, 300px)"
+					gridTemplateRows="repeat(auto-fill, 390px)"
+					margin="auto"
 				>
-					<Slider>
-						<Slide index={1}>
-							<Flex justifyContent="center" w="100%" alignItems="center">
-								<Grid w="80%" h="100%" gridTemplateRows="2% 1fr">
-									<Grid mt="1em" gridTemplateColumns="1fr 1fr 1fr">
-										<Flex flexDirection="column">
-											<Text>Type</Text>
-											<Text fontSize="1.4em" fontWeight="bold">
-												Full-Stack
-											</Text>
-										</Flex>
-										<Box>
-											<Heading as="h2">The Pit</Heading>
-										</Box>
-										<Box>
-											A stock trading platform designed for the user in mind and delivering a
-											friendly experience.
-										</Box>
-									</Grid>
-									<Flex alignItems="end" h="100%" mt="6em">
-										<Box>
-											<Image maxWidth="500px" h="600px" objectFit="cover" src={stock} />
-										</Box>
-										<Flex
-											display="none"
-											w="100%"
-											h="100%"
-											justifyContent="center"
-											alignItems="left"
-										>
-											<VStack>
-												<Text>React</Text>
-												<Text>HTML</Text>
-												<Text>SCSS</Text>
-											</VStack>
-										</Flex>
-									</Flex>
-								</Grid>
-							</Flex>
-						</Slide>
-						<Slide index={2}>
-							{' '}
-							<Flex justifyContent="center" w="100%" alignItems="center">
-								<Grid w="80%" h="100%" gridTemplateRows="2% 1fr">
-									<Grid mt="1em" gridTemplateColumns="1fr 1fr 1fr">
-										<Flex flexDirection="column">
-											<Text>Type</Text>
-											<Text fontSize="1.4em" fontWeight="bold">
-												Full-Stack
-											</Text>
-										</Flex>
-										<Box>
-											<Heading as="h2">Stay</Heading>
-										</Box>
-										<Box>
-											A real estate booking app for hosts and consumers to rent apartments,
-											houses, and condos.
-										</Box>
-									</Grid>
-									<Flex alignItems="end" h="100%" mt="6em">
-										<Box>
-											<Image maxWidth="500px" h="600px" objectFit="cover" src={stay} />
-										</Box>
-										<Flex
-											display="none"
-											w="100%"
-											h="100%"
-											justifyContent="center"
-											alignItems="left"
-										>
-											<VStack>
-												<Text>React</Text>
-												<Text>HTML</Text>
-												<Text>SCSS</Text>
-											</VStack>
-										</Flex>
-									</Flex>
-								</Grid>
-							</Flex>
-						</Slide>
-						<Slide index={3}>
-							{' '}
-							<Flex justifyContent="center" w="100%" alignItems="center">
-								<Grid w="80%" h="100%" gridTemplateRows="2% 1fr">
-									<Grid mt="1em" gridTemplateColumns="1fr 1fr 1fr">
-										<Flex flexDirection="column">
-											<Text>Type</Text>
-											<Text fontSize="1.4em" fontWeight="bold">
-												Full-Stack
-											</Text>
-										</Flex>
-										<Box>
-											<Heading as="h2">EverMonkey</Heading>
-										</Box>
-										<Box>
-											EverMonkey is an elegant note taking app designed for keeping track of your
-											busy work week.
-										</Box>
-									</Grid>
-									<Flex alignItems="end" h="100%" mt="6em">
-										<Box>
-											<Image maxWidth="500px" h="600px" objectFit="cover" src={evermonkey} />
-										</Box>
-										<Flex
-											display="none"
-											w="100%"
-											h="100%"
-											justifyContent="center"
-											alignItems="left"
-										>
-											<VStack>
-												<Text>React</Text>
-												<Text>HTML</Text>
-												<Text>SCSS</Text>
-											</VStack>
-										</Flex>
-									</Flex>
-								</Grid>
-							</Flex>
-						</Slide>
-					</Slider>
-				</CarouselProvider>
+					{projectData.map((data) => {
+						return (
+							<Box>
+								<Box position="relative">
+									<Heading
+										fontSize="1.5em"
+										w="70%"
+										bg="#f0f0f0"
+										zIndex="10"
+										position="absolute"
+										top="1em"
+										left="0"
+										pl="1em"
+									>
+										{data.title}
+									</Heading>
+									{data.image ? (
+										<Fragment>
+											<Image src={data.image} maxHeight="200px" w="100%" objectFit="cover" />
+										</Fragment>
+									) : (
+										<Skeleton />
+									)}
+								</Box>
+								<Box padding="1em">
+									<Text mb="1em">{data.paragraph}</Text>
+									<Box h="50px" mb="1em">
+										{data.stack.map((tech) => <Badge m=".2em">{tech}</Badge>)}
+									</Box>
+									<HStack spacing="2em">
+										{data.live === '' ? (
+											<Fragment />
+										) : (
+											<Fragment>
+												<a href={data.live} target="_blank" rel="noreferrer">
+													<Button type="primary">Live Site</Button>
+												</a>
+											</Fragment>
+										)}
+										<GitHub />
+									</HStack>
+								</Box>
+							</Box>
+						);
+					})}
+				</Grid>
 			</Box>
 		</Box>
 	);
 }
+
+const projectData = [
+	{
+		title: 'The Pit',
+		image: stock,
+		paragraph: 'A stock trading platform designed for the user in mind and delivering a friendly experience.',
+		live: '',
+		stack: [ 'React', 'Redux', 'Chakra', 'WebSocket', 'Nodejs', 'Mongodb', 'PostgreSQL', '' ],
+		repo: 'https://github.com/nicholasdegrate/The-Pit-frontend'
+	},
+	{
+		title: 'Stay',
+		image: stay,
+		paragraph: 'A real estate booking app for hosts and consumers to rent apartments, houses, and condos.',
+		live: '',
+		stack: [ 'React', 'Redux', 'Chakra', 'Rails', 'JWT TOKEN' ],
+		repo: 'https://github.com/nicholasdegrate/stay-frontend'
+	},
+	{
+		title: 'LRP',
+		image: lrp,
+		paragraph: 'A real estate landing page built in react for generating leads and traffic.',
+		live: 'https://legacyrebuildproperties.com/',
+		stack: [ 'TypeScript', 'Emailjs-com', 'Chakra', 'React' ],
+		repo: 'https://github.com/nicholasdegrate/real-estate'
+	},
+	{
+		title: 'EverMonkey',
+		image: evermonkey,
+		paragraph: 'EverMonkey is an elegant note taking app designed for keeping track of your busy work week.',
+		live: '',
+		stack: [ 'JavaScript', 'Rails', 'Bulma' ],
+		repo: 'https://github.com/nicholasdegrate/EverMonkey-frontend'
+	}
+];
 
 export default App;
