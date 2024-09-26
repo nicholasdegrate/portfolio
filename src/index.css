@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply max-w-screen-2xl m-auto;
+}
+
+@layer utilities {
+  /* .scrollbar::-webkit-scrollbar {
+  @apply h-2 w-2;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  @apply transition-colors;
+}
+
+::-webkit-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-border border-t border-t-transparent p-[1px] cursor-pointer  hidden;
+}
+
+.table-container:hover .scrollbar::-webkit-scrollbar-thumb {
+  @apply block;
+} */
+}
+#card {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%23333' stroke-width='2' stroke-dasharray='6%2c 14' stroke-dashoffset='3' stroke-linecap='round'/%3e%3c/svg%3e");
+}

@@ -1,0 +1,15 @@
+build
+dist
+node_modules
+.plasmo
+
+generated
+schema.json
+
+.eslintrc.js
+.prettierrc
+jest.config.js
+
+.env.d.ts
+generated
+public/__/auth/*
